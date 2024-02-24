@@ -1,86 +1,86 @@
-import { Suspense, useEffect, useState } from "react";
-
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
+import React, { Suspense, useEffect, useState } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
-type sType = "xs" | "sm" | "md" | "lg" | "xl";
-const Computers = () => {
-  const getScreen = (w: number): sType => {
-    if (w < 576) return "xs";
-    else if (w < 768) return "sm";
-    else if (w < 992) return "md";
-    else if (w < 1200) return "lg";
-    return "xl";
-  };
-  const [screen, setScreen] = useState(getScreen(window.innerWidth));
+
+// Custom hook for determining screen size
+const useScreenSize = () => {
+  const [screen, setScreen] = useState(() => {
+    const width = window.innerWidth;
+    return width < 576
+      ? "xs"
+      : width < 768
+      ? "sm"
+      : width < 992
+      ? "md"
+      : width < 1200
+      ? "lg"
+      : "xl";
+  });
 
   useEffect(() => {
     const handleResize = () => {
-      setScreen(getScreen(window.innerWidth));
+      const width = window.innerWidth;
+      setScreen(
+        width < 576
+          ? "xs"
+          : width < 768
+          ? "sm"
+          : width < 992
+          ? "md"
+          : width < 1200
+          ? "lg"
+          : "xl"
+      );
     };
 
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
-  const computer = useGLTF("./desktop_pc/scene.gltf");
-  const canvasPositionSm = [-1, -0.25, -1.5];
-  const canvasPositionlg = [0, -2.25, -1.5];
-  const scaleXS = 0.3;
-  const scaleLg = 0.7;
 
-  const isLarge = (screen: sType): boolean => {
-    return screen === "lg" || screen === "xl";
-  };
-  const isMobile = (screen: sType): boolean => {
-    return screen === "xs";
-  };
+  return screen;
+};
+
+// Component for rendering and animating the model
+const Model = ({ screen }) => {
+  const { scene } = useGLTF("./desktop_pc/scene.gltf");
+
+  // Animation loop for continuous rotation
+  useFrame(() => {
+    scene.rotation.y += 0.01; // Adjust rotation speed as needed
+  });
+
+  // Adjust scale and position based on screen size
+  const scale = screen === "xs" ? 0.3 : 0.8;
+  const position = screen === "xs" ? [-1, -0.25, -1.5] : [2, -1.5, -5];
 
   return (
-    <mesh>
-      <hemisphereLight intensity={0.8} groundColor="black" />
-      <pointLight intensity={1} />
-      <spotLight
-        position={[-20, 50, 10]}
-        angle={0.32}
-        penumbra={2}
-        intensity={1}
-        castShadow
-        color="purple"
-        shadow-mapSize={1024}
-      />
+    <>
       <primitive
-        object={computer.scene}
-        scale={isMobile(screen) ? scaleXS : scaleLg}
-        position={isMobile(screen) ? canvasPositionSm : canvasPositionlg}
-        rotation={[-0.01, -0.4, -0.3]}
+        object={scene}
+        rotation={[0, 0, -0.2]}
+        scale={scale}
+        position={position}
       />
-    </mesh>
+    </>
   );
 };
 
+// Canvas component wrapping the Model and configuring the scene
 const ComputersCanvas = () => {
+  const screen = useScreenSize();
+
   return (
-    <Canvas
-      frameloop="demand"
-      shadows
-      camera={{
-        position: [20, 3, 5],
-        fov: 25,
-      }}
-      gl={{
-        preserveDrawingBuffer: true,
-      }}
-    >
+    <Canvas shadows camera={{ position: [20, 3, 5], fov: 25 }}>
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
           enableZoom={false}
         />
-        <Computers />
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+        <Model screen={screen} />
       </Suspense>
     </Canvas>
   );

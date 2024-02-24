@@ -10,12 +10,12 @@ const Hero = () => {
         className={`${paddingX} absolute inset-0 top-[90px] max-w-7xl mx-auto flex flex-row items-start gap-5`}
       >
         <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-[#915eff]" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
+          <div className="w-5 h-5 rounded-full bg-[#047B97]" />
+          <div className="w-1 sm:h-80 h-40 brand-gradient" />
         </div>
         <div>
           <h1 className={`${heroHeadText} text-white`}>
-            Hi, I'm <span className="text-[#915eff]">Brahim</span>
+            Hi, I'm <span className="text-[#047B97]">Brahim</span>
           </h1>
           <p className={`${heroSubText} mt-2 text-white-100`}>
             Expert Full-Stack Engineer & Cybersecurity{" "}

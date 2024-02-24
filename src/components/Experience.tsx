@@ -22,7 +22,7 @@ const ExperienceCard: React.FC<{ experience: ExperienceType }> = ({
       borderRight: "7px solid #232631",
     }}
     date={experience.date}
-    iconStyle={{ background: experience.iconBg }}
+    iconStyle={{ background: "#fff" }}
     icon={
       <div className="flex justify-center items-center w-full h-full">
         <img
