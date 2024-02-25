@@ -8,12 +8,9 @@ import {
   html,
   css,
   reactjs,
-  redux,
   tailwind,
   nodejs,
-  mongodb,
   git,
-  figma,
   docker,
   adias,
   mytower,
@@ -24,6 +21,14 @@ import {
   jobit,
   tripguide,
   threejs,
+  postgres,
+  java,
+  spring,
+  angular,
+  aws,
+  k8s,
+  helm,
+  elastic,
 } from "../assets";
 
 export const navLinks = [
@@ -75,10 +80,14 @@ const technologies = [
     name: "CSS 3",
     icon: css,
   },
-  {
-    name: "JavaScript",
-    icon: javascript,
-  },
+  // {
+  //   name: "Tailwind CSS",
+  //   icon: tailwind,
+  // },
+  // {
+  //   name: "JavaScript",
+  //   icon: javascript,
+  // },
   {
     name: "TypeScript",
     icon: typescript,
@@ -88,36 +97,52 @@ const technologies = [
     icon: reactjs,
   },
   {
-    name: "Redux Toolkit",
-    icon: redux,
+    name: "Angular",
+    icon: angular,
+  },
+  // {
+  //   name: "Three JS",
+  //   icon: threejs,
+  // },
+  // {
+  //   name: "Node JS",
+  //   icon: nodejs,
+  // },
+  {
+    name: "Java",
+    icon: java,
   },
   {
-    name: "Tailwind CSS",
-    icon: tailwind,
+    name: "Spring",
+    icon: spring,
   },
   {
-    name: "Node JS",
-    icon: nodejs,
+    name: "ElasticSearch",
+    icon: elastic,
   },
   {
-    name: "MongoDB",
-    icon: mongodb,
-  },
-  {
-    name: "Three JS",
-    icon: threejs,
-  },
-  {
-    name: "git",
-    icon: git,
-  },
-  {
-    name: "figma",
-    icon: figma,
+    name: "Postgres",
+    icon: postgres,
   },
   {
     name: "docker",
     icon: docker,
+  },
+  {
+    name: "AWS",
+    icon: aws,
+  },
+  {
+    name: "Kubernetes",
+    icon: k8s,
+  },
+  {
+    name: "Helm",
+    icon: helm,
+  },
+  {
+    name: "git",
+    icon: git,
   },
 ];
 export interface ExperienceType {

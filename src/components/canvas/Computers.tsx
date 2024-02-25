@@ -1,45 +1,8 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Suspense } from "react";
 import CanvasLoader from "../Loader";
-
-// Custom hook for determining screen size
-const useScreenSize = () => {
-  const [screen, setScreen] = useState(() => {
-    const width = window.innerWidth;
-    return width < 576
-      ? "xs"
-      : width < 768
-      ? "sm"
-      : width < 992
-      ? "md"
-      : width < 1200
-      ? "lg"
-      : "xl";
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setScreen(
-        width < 576
-          ? "xs"
-          : width < 768
-          ? "sm"
-          : width < 992
-          ? "md"
-          : width < 1200
-          ? "lg"
-          : "xl"
-      );
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  return screen;
-};
+import { useScreenSize } from "../../hooks/useScreenSize";
 
 // Component for rendering and animating the model
 const Model = ({ screen }) => {

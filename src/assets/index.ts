@@ -1,63 +1,75 @@
-import logo from "./bmb_logo_01.png";
 import backend from "./backend.png";
+import logo from "./bmb_logo_01.png";
+import close from "./close.svg";
 import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
 import github from "./github.png";
 import menu from "./menu.svg";
-import close from "./close.svg";
+import mobile from "./mobile.png";
+import web from "./web.png";
 
+import aws from "./tech/AWS.png";
+import angular from "./tech/Angular.png";
+import elastic from "./tech/Elastic Search.png";
+import helm from "./tech/Helm.png";
+import java from "./tech/Java.png";
+import jenkins from "./tech/Jenkins.png";
+import k8s from "./tech/Kubernetes.png";
+import postgres from "./tech/PostgresSQL.png";
+import spring from "./tech/Spring.png";
 import css from "./tech/css.png";
 import docker from "./tech/docker.png";
-import figma from "./tech/figma.png";
 import git from "./tech/git.png";
 import html from "./tech/html.png";
 import javascript from "./tech/javascript.png";
-import mongodb from "./tech/mongodb.png";
 import nodejs from "./tech/nodejs.png";
 import reactjs from "./tech/reactjs.png";
-import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
-import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import typescript from "./tech/typescript.png";
 
+import carrent from "./carrent.png";
 import adias from "./company/adias.jpg";
-import mytower from "./company/mytower.jpg";
 import cocus from "./company/cocus.png";
 import itroad from "./company/itroad.png";
+import mytower from "./company/mytower.jpg";
 import sopra from "./company/sopra.jpg";
-import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
 export {
-  logo,
+  adias,
+  angular,
+  aws,
   backend,
-  creator,
-  mobile,
-  web,
-  github,
-  menu,
+  carrent,
   close,
+  cocus,
+  creator,
   css,
   docker,
-  figma,
+  elastic,
   git,
+  github,
+  helm,
   html,
-  javascript,
-  mongodb,
-  nodejs,
-  reactjs,
-  redux,
-  tailwind,
-  typescript,
-  threejs,
-  adias,
-  mytower,
-  cocus,
   itroad,
-  sopra,
-  carrent,
+  java,
+  javascript,
+  jenkins,
   jobit,
+  k8s,
+  logo,
+  menu,
+  mobile,
+  mytower,
+  nodejs,
+  postgres,
+  reactjs,
+  sopra,
+  spring,
+  tailwind,
+  threejs,
   tripguide,
+  typescript,
+  web,
 };
