@@ -5,7 +5,7 @@ import { useScreenSize } from "../../hooks/useScreenSize";
 import CanvasLoader from "../Loader";
 
 // Component for rendering and animating the model
-const Model = ({ screen }) => {
+const Model: React.FC<{ screen: string }> = ({ screen }) => {
   const { scene } = useGLTF("./desktop_pc/scene.gltf");
 
   // Animation loop for continuous rotation
@@ -31,7 +31,7 @@ const Model = ({ screen }) => {
 
 // Canvas component wrapping the Model and configuring the scene
 const ComputersCanvas = () => {
-  const screen = useScreenSize();
+  const { screen } = useScreenSize();
 
   return (
     <Canvas shadows camera={{ position: [20, 3, 5], fov: 25 }}>

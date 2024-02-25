@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { styles } from "../styles";
@@ -11,19 +11,26 @@ emailjs.init("L7wmyEXDvvBpXviKb");
 
 const Contact = () => {
   const formRef = useRef(null);
-  const [formData, setFormData] = useState({
+  type FormData = {
+    name: string;
+    email: string;
+    message: string;
+  };
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
   });
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -35,7 +42,7 @@ const Contact = () => {
         to_email: "brahim.bahaida@bmbsolutions.net",
         message: formData.message,
       })
-      .then((response) => {
+      .then(() => {
         setLoading(false);
         alert("Thank you, I'll get back to you ASAP");
         setFormData({ name: "", email: "", message: "" });
@@ -67,14 +74,16 @@ const Contact = () => {
             <label key={field} className="flex flex-col">
               <span className="text-white font-medium mb-4">Your {field}</span>
               {field !== "message" ? (
-                <input
-                  type={field === "email" ? "email" : "text"}
-                  name={field}
-                  value={formData[field]}
-                  onChange={handleChange}
-                  placeholder={`What's your ${field}?`}
-                  className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
-                />
+                (field === "email" || field === "name") && (
+                  <input
+                    type={field === "email" ? "email" : "text"}
+                    name={field}
+                    value={formData[field]}
+                    onChange={handleChange}
+                    placeholder={`What's your ${field}?`}
+                    className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+                  />
+                )
               ) : (
                 <textarea
                   name={field}

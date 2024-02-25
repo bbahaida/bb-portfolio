@@ -6,10 +6,10 @@ import {
   useTexture,
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
-import { useScreenSize } from "../../hooks/useScreenSize";
+import React, { Suspense } from "react";
+//import { useScreenSize } from "../../hooks/useScreenSize";
 import CanvasLoader from "../Loader";
-const Ball = ({ imgUrl }) => {
+const Ball: React.FC<{ imgUrl: string }> = ({ imgUrl }) => {
   const [decal] = useTexture([imgUrl]);
   return (
     <Float rotationIntensity={1} floatIntensity={2} speed={1.75}>
@@ -32,8 +32,8 @@ const Ball = ({ imgUrl }) => {
     </Float>
   );
 };
-const BallCanvas = ({ icon }) => {
-  const screen = useScreenSize();
+const BallCanvas: React.FC<{ icon: string }> = ({ icon }) => {
+  //const screen = useScreenSize();
 
   return (
     <Canvas gl={{ preserveDrawingBuffer: true }}>

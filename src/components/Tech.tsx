@@ -5,7 +5,7 @@ import { BallCanvas } from "./canvas";
 const Tech = () => {
   return (
     <div className="flex flex-row flex-wrap justify-center gap-10">
-      {technologies.map((t, i) => (
+      {technologies.map((t) => (
         <div className="w-28 h-28" key={t.name}>
           <BallCanvas icon={t.icon} />
         </div>

@@ -1,15 +1,12 @@
 import { motion } from "framer-motion";
-import React, { ComponentType, forwardRef, memo } from "react";
+import React, { ComponentType, forwardRef, memo, RefAttributes } from "react";
 import { styles } from "../styles";
 import { staggerContainer } from "../utils/motion";
 
-// Define a generic function that takes a React component and an idName string
-// and returns a new component with forwarded refs.
-export const SectionWrapper = <P extends any>(
+export function SectionWrapper<P>(
   Component: ComponentType<P>,
   idName: string
-): React.FC<P> => {
-  // Define the wrapped component using memo for performance optimization and forwardRef to handle refs
+): React.ComponentType<P & RefAttributes<HTMLDivElement>> {
   const WrappedComponent = memo(
     forwardRef<HTMLDivElement, P>((props, ref) => (
       <motion.section
@@ -23,15 +20,17 @@ export const SectionWrapper = <P extends any>(
           &nbsp;
         </span>
         {/* Spread the incoming props to the Component and attach the ref */}
-        <Component {...props} ref={ref} />
+        <Component {...props} ref={ref as any} />
       </motion.section>
     ))
   );
 
-  // Assign a display name for development and debugging purposes
   WrappedComponent.displayName = `SectionWrapper(${
     Component.displayName || Component.name || "Component"
   })`;
 
-  return WrappedComponent;
-};
+  // Return the wrapped component directly without explicitly defining it as React.FC
+  return WrappedComponent as React.ComponentType<
+    P & RefAttributes<HTMLDivElement>
+  >;
+}
