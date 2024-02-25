@@ -88,7 +88,7 @@ export const slideIn = (
 };
 
 export const staggerContainer = (
-  staggerChildren: any,
+  staggerChildren: number,
   delayChildren: number
 ) => {
   return {

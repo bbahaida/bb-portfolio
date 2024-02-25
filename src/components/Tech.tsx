@@ -1,7 +1,6 @@
-import React from "react";
 import { technologies } from "../constants";
-import { BallCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
+import { BallCanvas } from "./canvas";
 
 const Tech = () => {
   return (

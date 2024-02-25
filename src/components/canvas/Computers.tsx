@@ -1,8 +1,8 @@
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense } from "react";
-import CanvasLoader from "../Loader";
 import { useScreenSize } from "../../hooks/useScreenSize";
+import CanvasLoader from "../Loader";
 
 // Component for rendering and animating the model
 const Model = ({ screen }) => {

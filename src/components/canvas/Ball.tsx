@@ -1,14 +1,14 @@
-import React, { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
 import {
-  OrbitControls,
   Decal,
   Float,
+  OrbitControls,
   Preload,
   useTexture,
 } from "@react-three/drei";
-import CanvasLoader from "../Loader";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 import { useScreenSize } from "../../hooks/useScreenSize";
+import CanvasLoader from "../Loader";
 const Ball = ({ imgUrl }) => {
   const [decal] = useTexture([imgUrl]);
   return (
