@@ -36,11 +36,17 @@ import sopra from "./company/sopra.jpg";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 
+import brahim from "./testimonials/brahim.jpg";
+import aflouat from "./testimonials/aflouat.jpg";
+import mouls from "./testimonials/mouls.jpg";
+
 export {
   adias,
+  aflouat,
   angular,
   aws,
   backend,
+  brahim,
   carrent,
   close,
   cocus,
@@ -60,6 +66,7 @@ export {
   k8s,
   logo,
   menu,
+  mouls,
   mobile,
   mytower,
   nodejs,
