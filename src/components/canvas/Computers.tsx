@@ -36,7 +36,11 @@ const ComputersCanvas = (): ReactElement => {
   const { screen } = useScreenSize();
 
   return (
-    <Canvas shadows camera={{ position: [20, 3, 5], fov: 25 }}>
+    <Canvas
+      gl={{ antialias: false, powerPreference: "high-performance" }}
+      shadows
+      camera={{ position: [20, 3, 5], fov: 25 }}
+    >
       <Suspense fallback={<CanvasLoader />}>
         {/* Conditionally render Model only if screen has changed */}
         {useMemo(
@@ -46,7 +50,6 @@ const ComputersCanvas = (): ReactElement => {
           [screen]
         )}
         <OrbitControls
-          autoRotate
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
           enableZoom={false}

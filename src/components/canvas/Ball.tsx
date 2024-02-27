@@ -17,23 +17,23 @@ const Ball: React.FC<{ imgUrl: string }> = React.memo(({ imgUrl }) => {
   // Memoizing geometry args and material properties
   const dodecahedronArgs:
     | [radius?: number | undefined, detail?: number | undefined]
-    | undefined = useMemo(() => [1, 0], []);
+    | undefined = useMemo(() => [1, 1], []);
   const materialProps = useMemo(
     () => ({
-      color: "#5D6B88",
+      color: "#D1EEEB",
       polygonOffset: true,
-      polygonOffsetFactor: -5,
+      polygonOffsetFactor: -3,
       flatShading: true,
     }),
     []
   );
 
   return (
-    <Float rotationIntensity={1} floatIntensity={2} speed={1.75}>
+    <Float rotationIntensity={1} floatIntensity={1} speed={1}>
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>
-        <dodecahedronGeometry args={dodecahedronArgs} />
+        <icosahedronGeometry args={dodecahedronArgs} />
         <meshStandardMaterial {...materialProps} />
         {decal && (
           <Decal
