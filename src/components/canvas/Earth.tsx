@@ -4,16 +4,17 @@ import { Suspense, useMemo } from "react";
 import Loader from "../Loader";
 
 const Earth = () => {
-  const { scene } = useGLTF("./planet/scene.gltf");
+  // Use useGLTF with options for optimization
+  const { scene } = useGLTF("./planet/scene.gltf", true);
 
   // Use useMemo to avoid re-creating the primitive on every render
   const earthComponent = useMemo(
     () => (
       <primitive
-        object={scene}
+        object={scene} // Access the specific node representing the Earth mesh
         scale={2.5}
         position={[0, 0, 0]}
-        rotation={[0, 0, 0]}
+        rotation={[0, 0, 0]} // Use pre-loaded material if it exists
       />
     ),
     [scene]
@@ -30,7 +31,7 @@ const EarthCanvas = () => {
       camera={{ fov: 45, near: 0.1, far: 200, position: [-4, 3, 6] }}
     >
       <Suspense fallback={<Loader />}>
-        <ambientLight intensity={0.5} /> {/* Optimized lighting */}
+        <ambientLight intensity={0.25} /> {/* Reduce ambient light intensity */}
         <OrbitControls
           autoRotate
           enableZoom={false}

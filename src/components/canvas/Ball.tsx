@@ -9,13 +9,15 @@ import { Canvas } from "@react-three/fiber";
 import React, { Suspense, useMemo } from "react";
 import CanvasLoader from "../Loader";
 
+// Memoizing at component level for less frequent updates
 const Ball: React.FC<{ imgUrl: string }> = React.memo(({ imgUrl }) => {
-  const [decal] = useTexture([imgUrl]); // Ensure useTexture is correctly used with an array even for a single texture
+  // Lazy loading with memoization for texture
+  const [decal] = useTexture(useMemo(() => [imgUrl], [imgUrl]));
 
-  // useMemo to memoize the geometry args and material properties
+  // Memoizing geometry args and material properties
   const dodecahedronArgs:
     | [radius?: number | undefined, detail?: number | undefined]
-    | undefined = useMemo(() => [1, 0], []); // Corrected args to [radius, detail]
+    | undefined = useMemo(() => [1, 0], []);
   const materialProps = useMemo(
     () => ({
       color: "#5D6B88",
@@ -31,10 +33,8 @@ const Ball: React.FC<{ imgUrl: string }> = React.memo(({ imgUrl }) => {
       <ambientLight intensity={0.25} />
       <directionalLight position={[0, 0, 0.05]} />
       <mesh castShadow receiveShadow scale={2.75}>
-        {/* Correctly passed dodecahedron args */}
         <dodecahedronGeometry args={dodecahedronArgs} />
         <meshStandardMaterial {...materialProps} />
-        {/* Ensure decal uses the loaded texture */}
         {decal && (
           <Decal
             map={decal}
@@ -47,7 +47,7 @@ const Ball: React.FC<{ imgUrl: string }> = React.memo(({ imgUrl }) => {
   );
 });
 
-const BallCanvas: React.FC<{ icon: string }> = ({ icon }) => {
+const BallCanvas: React.FC<{ icon: string }> = React.memo(({ icon }) => {
   return (
     <Canvas gl={{ preserveDrawingBuffer: true }} shadows>
       <Suspense fallback={<CanvasLoader />}>
@@ -57,6 +57,6 @@ const BallCanvas: React.FC<{ icon: string }> = ({ icon }) => {
       <Preload all />
     </Canvas>
   );
-};
+});
 
-export default React.memo(BallCanvas); // Memoizing at export is a good practice if props are unlikely to change frequently
+export default BallCanvas;
