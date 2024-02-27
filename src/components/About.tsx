@@ -44,7 +44,7 @@ const About = () => {
         <h2 className={`${sectionHeadText}`}>Overview.</h2>
       </motion.div>
       <motion.p
-        className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
+        className="mt-4 text-white text-[17px] max-w-3xl leading-[30px]"
         variants={fadeIn("right", "spring", 0.5, 0.7)}
       >
         {info.about}
