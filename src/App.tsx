@@ -9,6 +9,7 @@ import {
   Navbar,
   Tech,
 } from "./components";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 const App = () => {
   return (
     <BrowserRouter>
@@ -27,6 +28,7 @@ const App = () => {
           {/* <StarsCanvas /> */}
         </div>
       </div>
+      <SpeedInsights />
     </BrowserRouter>
   );
 };
