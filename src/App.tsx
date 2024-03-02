@@ -10,6 +10,7 @@ import {
   Tech,
 } from "./components";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 const App = () => {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ const App = () => {
         </div>
       </div>
       <SpeedInsights />
+      <Analytics />
     </BrowserRouter>
   );
 };
