@@ -45,7 +45,7 @@ export const navLinks = [
 const info = {
   name: "Brahim",
   about:
-    "I'm an accomplished Full-Stack Engineer and Cybersecurity Specialist with four years of experience in crafting Java applications. I possess deep expertise in OOP, Java, Spring, and I'm skilled in Angular, TypeScript, and Golang. I had led numerous projects, focusing on platform development, solution migration, and testing. I'm also a certified Scrum Foundation Professional, Kubernetes Administrator, and Oracle Professional, highlighting my commitment to agile practices and technology mastery. I stand ready to bring my diverse skill set and innovative approach to forward-thinking teams.",
+    "I'm an accomplished Full-Stack Engineer and Cybersecurity Specialist with more than five years of experience in crafting enterprise level applications. I possess deep expertise in OOP, Java, Spring, and I'm skilled in Angular, TypeScript, and Golang. I had led numerous projects, focusing on platform development, solution migration, and testing. I'm also a certified Scrum Foundation Professional, Kubernetes Administrator, and Java 11 Oracle Professional, highlighting my commitment to agile practices and technology mastery. I stand ready to bring my diverse skill set and innovative approach to forward-thinking teams.",
 };
 
 const services = [
